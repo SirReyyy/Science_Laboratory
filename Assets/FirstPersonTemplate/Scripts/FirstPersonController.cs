@@ -3,6 +3,11 @@
 using UnityEngine.InputSystem;
 #endif
 
+//-- Interact Interface
+interface IInteractable {
+    public void Interact();
+}
+
 namespace StarterAssets
 {
 	[RequireComponent(typeof(CharacterController))]
@@ -64,6 +69,18 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
+		// interact
+		public Transform InteractorSource;
+    	[HideInInspector]
+		public float InteractRange = 3.0f;
+
+		// crouch
+		bool isCrouching = false;
+		int interpolationFramesCount = 60;
+		int elapsedFrame = 0;
+		Vector3 initialScale = new Vector3(3.5f, 3.5f, 3.5f);
+		Vector3 newScale = new Vector3(3.5f, 2.0f, 3.5f);
+
 	
 #if ENABLE_INPUT_SYSTEM
 		private PlayerInput _playerInput;
@@ -115,6 +132,8 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			Interact(); //--
+			Crouch(); //--
 		}
 
 		private void LateUpdate()
@@ -243,6 +262,43 @@ namespace StarterAssets
 			if (_verticalVelocity < _terminalVelocity)
 			{
 				_verticalVelocity += Gravity * Time.deltaTime;
+			}
+		}
+
+		private void Interact() { //--
+			if(_input.interact) {
+				
+				Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
+				if(Physics.Raycast(r, out RaycastHit hitInfo, InteractRange)) {
+					if(hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj)) {
+						interactObj.Interact();
+					}
+				}
+
+				_input.interact = false;
+			}
+		}
+
+		private void Crouch() { //--
+			float interpolationRatio = (float)elapsedFrame/interpolationFramesCount;
+
+			if(_input.crouch) {
+				if(!isCrouching) {
+					isCrouching = true;
+					transform.localScale = Vector3.Lerp(initialScale, newScale, interpolationRatio);
+					//elapsedFrame = (elapsedFrame + 1) % (interpolationFramesCount + 1);
+
+					Debug.Log(isCrouching);
+				} else {
+					isCrouching = false;
+					transform.localScale = Vector3.Lerp(newScale, initialScale, interpolationRatio);
+					//elapsedFrame = (elapsedFrame + 1) % (interpolationFramesCount + 1);
+
+					Debug.Log(isCrouching);
+				}
+				
+				elapsedFrame = (elapsedFrame + 1) % (interpolationFramesCount + 1);
+				_input.crouch = false;
 			}
 		}
 

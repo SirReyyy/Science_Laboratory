@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab223e62384c36e41bf63895a8edf6aa, type: 3}
   m_Name: Blue Safety Glasses
   m_EditorClassIdentifier: 
-  id: 4
+  id: 1
   displayName: Blue Safety Glasses
   icon: {fileID: 21300000, guid: 0d7a14a72d64f314ab79c26f433076e2, type: 3}
   prefab: {fileID: 2271154600002879861, guid: ae210c6fcae4c8d4a955d9245bdcfc02, type: 3}

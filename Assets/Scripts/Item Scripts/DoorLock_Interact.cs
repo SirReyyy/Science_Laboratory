@@ -1,40 +1,70 @@
 using UnityEngine;
 
 public class DoorLock_Interact : MonoBehaviour, IInteractable {
-    public Transform doorTransform;
-    Vector3 initialPosition, newPosition, difference;
-    bool isClose;
-    int interpolationFramesCount = 60;
-	int elapsedFrame = 0;
-    float interpolationRatio;
+    
+    public InventorySystem inventorySystem;
+    public InventoryItemData itemReq1;
+    public InventoryItemData itemReq2;
+    public InventoryItemData itemReq3;
+
+    public bool isLaboratory;
+    bool labClose;
+    bool storageClose;
 
     void Start() {
-        initialPosition = new Vector3(22.8f, 0.0f, 0.0f);
-        newPosition = new Vector3(17.0f, 0.0f, 0.0f);
+        inventorySystem = GameObject.Find("GameManager").GetComponent<InventorySystem>();
     } //-- Start() --
 
-    void Update() {
-        interpolationRatio = (float)elapsedFrame/interpolationFramesCount;
-    }
-
     public void Interact() {
-        Debug.Log("door interact");
+        if(isLaboratory) {      // Laboratory Room
+            if(HasRequirement()) {
+                if(labClose) {
+                    // Open animation
 
-        if(isClose) {
-            doorTransform.localPosition = Vector3.Lerp(initialPosition, newPosition, interpolationRatio);
+                    Debug.Log("open");
+                    labClose = false;
+                } else {
+                    // Close animation
 
-            isClose = false;
+                    Debug.Log("close");
+                    labClose = true;
+                }
+            } else {
+                // missing notif
+                Debug.Log("missing");
+            }
+
+
+
         } else {
-            doorTransform.localPosition = Vector3.Lerp(newPosition, initialPosition, interpolationRatio);
+            // Storage Room
+            if(storageClose) {
+                // Open animation
 
-            isClose = true;
+                Debug.Log("false");
+                storageClose = false;
+            } else {
+                // Close animation
+
+                Debug.Log("true");
+                storageClose = true;
+            }
         }
 
-        elapsedFrame = (elapsedFrame + 1) % (interpolationFramesCount + 1);
-       
     } //-- Interact() --
-}
 
+    public bool HasRequirement() {
+        InventoryItem labItem1 = inventorySystem.Get(itemReq1);
+        InventoryItem labItem2 = inventorySystem.Get(itemReq2);
+        InventoryItem labItem3 = inventorySystem.Get(itemReq3);
+
+        if(labItem1 == null || labItem2 == null || labItem3 == null) {
+            return false;
+        }
+
+        return true;
+    } //-- HasRequirement() --
+}
 
 /*
 

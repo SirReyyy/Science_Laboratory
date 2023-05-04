@@ -2,12 +2,17 @@ using UnityEngine;
 
 public class PickUp_Interact : MonoBehaviour, IInteractable {
     
+    public InventoryItemData referenceItem;
+    public InventorySystem inventorySystem;
+    // public GameObject inventory;
+
     void Start() {
-        
+        inventorySystem = GameObject.Find("InventorySystem").GetComponent<InventorySystem>();
+        // inventorySystem = InventorySystem.Find()
     } //-- Start() --
 
     public void Interact() {
-       Debug.Log("item picked-up");
+       inventorySystem.Add(referenceItem);
        Destroy(gameObject);
     } //-- Interact() --
 }

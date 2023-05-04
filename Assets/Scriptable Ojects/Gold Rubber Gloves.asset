@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab223e62384c36e41bf63895a8edf6aa, type: 3}
+  m_Name: Gold Rubber Gloves
+  m_EditorClassIdentifier: 
+  id: 3
+  displayName: Gold Rubber Gloves
+  icon: {fileID: 21300000, guid: 59ada3fc1b20a2b498632c7f077aaaa5, type: 3}
+  prefab: {fileID: 7952854851759314969, guid: f0f55eb20841cd24a9f3d7cd4f98e850, type: 3}

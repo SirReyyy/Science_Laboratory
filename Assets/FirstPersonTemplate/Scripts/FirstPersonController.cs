@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.Animations;
+
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -74,12 +76,11 @@ namespace StarterAssets
     	[HideInInspector]
 		public float InteractRange = 3.0f;
 
-		// crouch
-		bool isCrouching = false;
-		int interpolationFramesCount = 60;
-		int elapsedFrame = 0;
-		Vector3 initialScale = new Vector3(3.5f, 3.5f, 3.5f);
-		Vector3 newScale = new Vector3(3.5f, 2.0f, 3.5f);
+		/* // crouch
+		public Transform _playerScale;
+		private Vector3 currentScale, newScale;
+
+		private bool isCrouching = false; */
 
 	
 #if ENABLE_INPUT_SYSTEM
@@ -116,15 +117,19 @@ namespace StarterAssets
 		{
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
+
+
 #if ENABLE_INPUT_SYSTEM
 			_playerInput = GetComponent<PlayerInput>();
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
-
+			
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+
+			// currentScale = _playerScale.localScale;
 		}
 
 		private void Update()
@@ -132,8 +137,8 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
-			Interact(); //--
-			Crouch(); //--
+			Interact();
+			// Crouch();
 		}
 
 		private void LateUpdate()
@@ -265,7 +270,7 @@ namespace StarterAssets
 			}
 		}
 
-		private void Interact() { //--
+		private void Interact() {
 			if(_input.interact) {
 				
 				Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
@@ -279,28 +284,23 @@ namespace StarterAssets
 			}
 		}
 
-		private void Crouch() { //--
-			float interpolationRatio = (float)elapsedFrame/interpolationFramesCount;
+		/*private void Crouch() {
 
 			if(_input.crouch) {
 				if(!isCrouching) {
+					newScale = new Vector3(3.5f, 2.0f, 3.5f);
+
 					isCrouching = true;
-					transform.localScale = Vector3.Lerp(initialScale, newScale, interpolationRatio);
-					//elapsedFrame = (elapsedFrame + 1) % (interpolationFramesCount + 1);
-
-					Debug.Log(isCrouching);
 				} else {
-					isCrouching = false;
-					transform.localScale = Vector3.Lerp(newScale, initialScale, interpolationRatio);
-					//elapsedFrame = (elapsedFrame + 1) % (interpolationFramesCount + 1);
+					newScale = currentScale;
+					_playerScale.localScale = newScale;
 
-					Debug.Log(isCrouching);
+					isCrouching = false;
 				}
-				
-				elapsedFrame = (elapsedFrame + 1) % (interpolationFramesCount + 1);
+
 				_input.crouch = false;
 			}
-		}
+		}*/
 
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 		{

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7106502690692102496}
   - component: {fileID: 7106502690692102511}
   - component: {fileID: 7106502690692102510}
-  - component: {fileID: 7106502690692102497}
   m_Layer: 0
   m_Name: Gold_RubberGloves (1)
   m_TagString: Untagged
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7106502690692102497
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7106502690692102499}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.092496395, y: 0.288184, z: 0.0095061315}
-  m_Center: {x: 0.013474217, y: -0.108961135, z: 0}
 --- !u!1 &7952854851759314969
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,8 +94,8 @@ GameObject:
   - component: {fileID: 7283983018772611747}
   - component: {fileID: 5961143456333319430}
   - component: {fileID: 8457420532369111500}
-  - component: {fileID: 7106502691887916468}
   - component: {fileID: 346141741788934076}
+  - component: {fileID: 543450652535133082}
   m_Layer: 0
   m_Name: Gold_RubberGloves
   m_TagString: Untagged
@@ -183,19 +169,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7106502691887916468
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7952854851759314969}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.092496395, y: 0.288184, z: 0.0095061315}
-  m_Center: {x: 0.013474217, y: -0.108961135, z: 0}
 --- !u!114 &346141741788934076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,3 +183,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   referenceItem: {fileID: 11400000, guid: 987c8b3ab2e7b86488df01e4d7a3daef, type: 2}
   inventorySystem: {fileID: 0}
+  uiManager: {fileID: 0}
+--- !u!65 &543450652535133082
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7952854851759314969}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.24, y: 0.28818405, z: 0.009506133}
+  m_Center: {x: 0.07, y: -0.10896116, z: 0}

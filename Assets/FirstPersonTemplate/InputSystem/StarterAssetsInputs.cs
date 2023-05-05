@@ -13,8 +13,8 @@ namespace StarterAssets
 		public bool jump;
 		public bool sprint;
 
-		public bool interact; //--
-		public bool crouch; //--
+		public bool interact;
+		public bool crouch;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -79,12 +79,12 @@ namespace StarterAssets
 			sprint = newSprintState;
 		}
 
-		public void InteractInput(bool newInteractState) //--
+		public void InteractInput(bool newInteractState)
 		{
 			interact = newInteractState;
 		}
 
-		public void CrouchInput(bool newInteractState) //--
+		public void CrouchInput(bool newInteractState)
 		{
 			crouch = newInteractState;
 		}

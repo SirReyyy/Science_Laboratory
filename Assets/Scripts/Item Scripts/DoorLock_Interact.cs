@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class DoorLock_Interact : MonoBehaviour, IInteractable {
     
@@ -11,46 +12,40 @@ public class DoorLock_Interact : MonoBehaviour, IInteractable {
     bool labClose;
     bool storageClose;
 
+    public Animator storageDoorAnimator;
+    public Animator labDoorAnimator;
+    
+
     void Start() {
         inventorySystem = GameObject.Find("GameManager").GetComponent<InventorySystem>();
+        storageDoorAnimator = GameObject.Find("Door (Storage)").GetComponent<Animator>();
+        labDoorAnimator = GameObject.Find("Door (Lab)").GetComponent<Animator>();
     } //-- Start() --
 
     public void Interact() {
         if(isLaboratory) {      // Laboratory Room
             if(HasRequirement()) {
                 if(labClose) {
-                    // Open animation
-
-                    Debug.Log("open");
+                    labDoorAnimator.SetBool("isClose", false);
                     labClose = false;
                 } else {
-                    // Close animation
-
-                    Debug.Log("close");
+                    labDoorAnimator.SetBool("isClose", true);
                     labClose = true;
                 }
             } else {
                 // missing notif
                 Debug.Log("missing");
             }
-
-
-
         } else {
             // Storage Room
             if(storageClose) {
-                // Open animation
-
-                Debug.Log("false");
+                storageDoorAnimator.SetBool("isClose", false);
                 storageClose = false;
             } else {
-                // Close animation
-
-                Debug.Log("true");
+                storageDoorAnimator.SetBool("isClose", true);
                 storageClose = true;
             }
         }
-
     } //-- Interact() --
 
     public bool HasRequirement() {

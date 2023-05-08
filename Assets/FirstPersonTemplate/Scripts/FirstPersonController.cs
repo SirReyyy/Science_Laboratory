@@ -73,14 +73,12 @@ namespace StarterAssets
 
 		// interact
 		public Transform InteractorSource;
-    	[HideInInspector]
-		public float InteractRange = 3.0f;
+		bool isActive = false;
+    	
+		public float InteractRange;
 
-		/* // crouch
-		public Transform _playerScale;
-		private Vector3 currentScale, newScale;
-
-		private bool isCrouching = false; */
+		// UI
+		public UIManager uiManager;
 
 	
 #if ENABLE_INPUT_SYSTEM
@@ -129,7 +127,7 @@ namespace StarterAssets
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
 
-			// currentScale = _playerScale.localScale;
+			uiManager = GameObject.Find("GameManager").GetComponent<UIManager>();
 		}
 
 		private void Update()
@@ -271,36 +269,26 @@ namespace StarterAssets
 		}
 
 		private void Interact() {
-			if(_input.interact) {
-				
-				Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
-				if(Physics.Raycast(r, out RaycastHit hitInfo, InteractRange)) {
-					if(hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj)) {
-						interactObj.Interact();
-					}
-				}
+			Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
+			
+			if(Physics.Raycast(r, out RaycastHit hitInfo, InteractRange)) {
+				if(hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj)) {
+					if(!isActive) {
+						uiManager.ShowInteract(true);
+						isActive = true;
 
-				_input.interact = false;
+						if(_input.interact) {
+							interactObj.Interact();
+							_input.interact = false;
+						}
+					} else {
+						isActive = false;
+					}
+				} else {
+					uiManager.ShowInteract(false);
+				}
 			}
 		}
-
-		/*private void Crouch() {
-
-			if(_input.crouch) {
-				if(!isCrouching) {
-					newScale = new Vector3(3.5f, 2.0f, 3.5f);
-
-					isCrouching = true;
-				} else {
-					newScale = currentScale;
-					_playerScale.localScale = newScale;
-
-					isCrouching = false;
-				}
-
-				_input.crouch = false;
-			}
-		}*/
 
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 		{

@@ -3,14 +3,13 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class TaskManager : MonoBehaviour {
-
+    // Task List
     private Dictionary<TaskData, Task> m_taskDictionary;
     public List<Task> task {get; private set;}
+    public TaskData[] taskData;
 
-    public Canvas PlayerHUD;
-    public InventorySystem inventorySystem;
-    Transform mainTask, subTask;
-    bool mainActive = false, subActive = false;
+    // UI
+    public TaskUI taskUI;
 
 
     void Awake() {
@@ -19,27 +18,47 @@ public class TaskManager : MonoBehaviour {
     } //-- Awake() --
 
     void Start() {
-        mainTask = PlayerHUD.transform.Find("Task");
-        subTask = PlayerHUD.transform.Find("Task").transform.GetChild(1);
+        foreach(TaskData i in taskData) {
+            Add(i);
+        }
     } //-- Start() --
-
     
+    void Update() {
+        taskUI.UpdateActiveTask(taskData);
+        taskUI.UpdateTaskListUI(taskData);
+    }
+
     public void ShowTaskList() {
-        if(!mainActive) {
-            mainTask.gameObject.SetActive(true);
-            mainActive = true;
+        taskUI.ShowTaskList();
+    }
+
+    public Task Get(TaskData referenceData) {
+        if(m_taskDictionary.TryGetValue(referenceData, out Task value)) {
+            return value;
+        }
+        return null;
+    } //-- Get
+    
+    public void Add(TaskData referenceData) {
+        if(m_taskDictionary.TryGetValue(referenceData, out Task value)) {
+            value.AddToStack();
         } else {
-            if(!subActive) {
-                subTask.gameObject.SetActive(true);
-                subActive = true;
-            } else {
-                mainTask.gameObject.SetActive(false);
-                subTask.gameObject.SetActive(false);
-                mainActive = false;
-                subActive = false;
+            Task newItem = new Task(referenceData);
+            task.Add(newItem);
+            m_taskDictionary.Add(referenceData, newItem);
+        }
+    } //-- Add
+
+    public void Remove(TaskData referenceData) {
+        if(m_taskDictionary.TryGetValue(referenceData, out Task value)) {
+            value.RemoveFromStack();
+
+            if(value.taskStackSize == 0) {
+                task.Remove(value);
+                m_taskDictionary.Remove(referenceData);
             }
         }
-    } //-- ShowTaskList() --
+    } //-- Remove
 }
 
 

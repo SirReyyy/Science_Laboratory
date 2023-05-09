@@ -16,6 +16,6 @@ MonoBehaviour:
   subId: 2
   isActive: 0
   isFinished: 0
-  taskDetails: '- Search for the Microscope'
-  requiredItem: {fileID: 6850820445048183167, guid: a1caf10942ab0484889502c80b7cf3fe,
+  taskDetails: Search for the Red Lab Sample in the Storage Room
+  requiredItem: {fileID: 5838053120746942599, guid: a669c29eeb3d3fa41997ca268429a9d8,
     type: 3}

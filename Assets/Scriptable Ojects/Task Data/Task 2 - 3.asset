@@ -16,6 +16,5 @@ MonoBehaviour:
   subId: 3
   isActive: 0
   isFinished: 0
-  taskDetails: '- Search for the Red Lab Sample'
-  requiredItem: {fileID: 5838053120746942599, guid: a669c29eeb3d3fa41997ca268429a9d8,
-    type: 3}
+  taskDetails: Make way to the Laboratory Room
+  requiredItem: {fileID: 0}

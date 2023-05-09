@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainId: 1
   subId: 1
-  isActive: 0
+  isActive: 1
   isFinished: 0
-  taskDetails: '- Find the Storage Room'
+  taskDetails: Make your way to the Storage Room
   requiredItem: {fileID: 0}

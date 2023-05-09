@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainId: 1
   subId: 2
-  isActive: 0
+  isActive: 1
   isFinished: 0
-  taskDetails: '- Search for your White Laboratory Gown'
+  taskDetails: Search for your White Laboratory Gown
   requiredItem: {fileID: 5217584349607287127, guid: 5e2f6cadac5857d4eb0e3346abe877ec,
     type: 3}

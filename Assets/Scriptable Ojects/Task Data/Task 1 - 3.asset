@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainId: 1
   subId: 3
-  isActive: 0
+  isActive: 1
   isFinished: 0
-  taskDetails: '- Search for your Gold Rubber Gloves'
+  taskDetails: Search for your Gold Rubber Gloves
   requiredItem: {fileID: 7952854851759314969, guid: f0f55eb20841cd24a9f3d7cd4f98e850,
     type: 3}

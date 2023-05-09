@@ -72,10 +72,9 @@ namespace StarterAssets
 		private float _fallTimeoutDelta;
 
 		// interact
-		public Transform InteractorSource;
-		bool isActive = false;
-    	
-		public float InteractRange;
+		IInteractable interactObj;
+		bool canInteract = false;
+    	public float InteractRange;
 
 		// UI
 		public UIManager uiManager;
@@ -135,8 +134,8 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			CheckInteract();
 			Interact();
-			// Crouch();
 		}
 
 		private void LateUpdate()
@@ -268,25 +267,29 @@ namespace StarterAssets
 			}
 		}
 
-		private void Interact() {
-			Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
-			
-			if(Physics.Raycast(r, out RaycastHit hitInfo, InteractRange)) {
-				if(hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj)) {
-					if(!isActive) {
-						uiManager.ShowInteract(true);
-						isActive = true;
+		private void CheckInteract() {
+			Ray r = new Ray(_mainCamera.transform.position, _mainCamera.transform.forward);
+			RaycastHit hitInfo;
 
-						if(_input.interact) {
-							interactObj.Interact();
-							_input.interact = false;
-						}
-					} else {
-						isActive = false;
-					}
+			if(Physics.Raycast(r, out hitInfo, InteractRange, -1 )) {
+				if(hitInfo.collider.gameObject.TryGetComponent(out interactObj)) {
+					uiManager.ShowInteract(true);
+					canInteract = true;
 				} else {
-					uiManager.ShowInteract(false);
+					
+					canInteract = false;
 				}
+			} else {
+				uiManager.ShowInteract(false);
+			}
+		}
+
+		private void Interact() {
+			if(_input.interact) {
+				if(canInteract) {
+					interactObj.Interact();
+					_input.interact = false;
+				}	
 			}
 		}
 

@@ -9,8 +9,8 @@ public class DoorLock_Interact : MonoBehaviour, IInteractable {
     public InventoryItemData itemReq3;
 
     public bool isLaboratory;
-    bool labClose;
-    bool storageClose;
+    bool labClose = true;
+    bool storageClose = true;
 
     public Animator storageDoorAnimator;
     public Animator labDoorAnimator;

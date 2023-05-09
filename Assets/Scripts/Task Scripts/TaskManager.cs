@@ -11,6 +11,11 @@ public class TaskManager : MonoBehaviour {
     // UI
     public TaskUI taskUI;
 
+    //
+    [HideInInspector]
+    public int MainTask1Count = 0;
+    public int MainTask2Count = 0; 
+
 
     void Awake() {
         task = new List<Task>();
@@ -18,19 +23,47 @@ public class TaskManager : MonoBehaviour {
     } //-- Awake() --
 
     void Start() {
-        foreach(TaskData i in taskData) {
-            Add(i);
-        }
+        MainTask1();
+        taskUI.InitMainTask1(taskData);
     } //-- Start() --
     
     void Update() {
-        taskUI.UpdateActiveTask(taskData);
+        if(MainTask1Count >= 4) {
+            MainTask2();
+            taskUI.InitMainTask2(taskData);
+        }
+
         taskUI.UpdateTaskListUI(taskData);
+    } //-- Update() --
+
+    public void MainTask1() {
+        foreach(TaskData td in taskData) {
+            if(td.mainId == 1) {
+                td.isActive = true;
+                td.isFinished = false;
+            } else {
+                td.isActive = false;
+                td.isFinished = false;
+            }
+            Add(td);
+        }
+    } //-- MainTask1() --
+
+    public void MainTask2() {
+        foreach(TaskData td in taskData) {
+            if(td.mainId == 2) {
+                td.isActive = true;
+            } else {
+                td.isActive = false;
+                td.isFinished = true;
+            }
+            Add(td);
+        }
     }
 
     public void ShowTaskList() {
         taskUI.ShowTaskList();
-    }
+    } //-- ShowTaskList() --
 
     public Task Get(TaskData referenceData) {
         if(m_taskDictionary.TryGetValue(referenceData, out Task value)) {

@@ -184,6 +184,8 @@ MonoBehaviour:
   referenceItem: {fileID: 11400000, guid: 987c8b3ab2e7b86488df01e4d7a3daef, type: 2}
   inventorySystem: {fileID: 0}
   uiManager: {fileID: 0}
+  _taskManager: {fileID: 0}
+  _taskData: {fileID: 11400000, guid: df7e5c1e486001045afa2393fd7b9d3f, type: 2}
 --- !u!65 &543450652535133082
 BoxCollider:
   m_ObjectHideFlags: 0

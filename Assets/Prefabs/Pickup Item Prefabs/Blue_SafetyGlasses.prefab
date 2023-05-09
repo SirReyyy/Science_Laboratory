@@ -113,3 +113,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   referenceItem: {fileID: 11400000, guid: 6cd6fc4163c8fac44bdbc99f1621b070, type: 2}
   inventorySystem: {fileID: 0}
+  uiManager: {fileID: 0}
+  _taskManager: {fileID: 0}
+  _taskData: {fileID: 11400000, guid: d3a52d558f6bb5742b4c8bd8fc7999e9, type: 2}

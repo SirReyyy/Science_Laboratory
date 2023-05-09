@@ -281,6 +281,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   referenceItem: {fileID: 11400000, guid: e705fa2bbd88fa841ad236b1be251915, type: 2}
   inventorySystem: {fileID: 0}
+  uiManager: {fileID: 0}
+  _taskManager: {fileID: 0}
+  _taskData: {fileID: 11400000, guid: 4bc95c7a62ffab442bcf0d6fc69a4844, type: 2}
 --- !u!1 &7430047830062421889
 GameObject:
   m_ObjectHideFlags: 0

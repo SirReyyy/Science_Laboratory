@@ -7,6 +7,9 @@ public class PickUp_Interact : MonoBehaviour, IInteractable {
     public InventorySystem inventorySystem;
     public UIManager uiManager;
 
+    public TaskManager _taskManager;
+    public TaskData _taskData;
+
 
     private int itemId;
     private string itemName;
@@ -15,16 +18,22 @@ public class PickUp_Interact : MonoBehaviour, IInteractable {
     void Start() {
         inventorySystem = GameObject.Find("GameManager").GetComponent<InventorySystem>();
         uiManager = GameObject.Find("GameManager").GetComponent<UIManager>();
+        _taskManager = GameObject.Find("GameManager").GetComponent<TaskManager>();
     } //-- Start() --
 
     public void Interact() {
         inventorySystem.Add(referenceItem);
+        _taskData.isFinished = true;
+
+        if(_taskData.mainId == 1) {
+            _taskManager.MainTask1Count++;
+        } else {
+            _taskManager.MainTask2Count++;
+        }
+        
         Destroy(gameObject);
 
         itemId = referenceItem.id;
-        // itemName = referenceItem.displayName;
-
-        // uiManager.PickUpNotif(itemName);
         uiManager.UpdateInventoryIcon(itemId - 1);
 
     } //-- Interact() --

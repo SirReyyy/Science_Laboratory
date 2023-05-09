@@ -21,9 +21,10 @@ public class TaskUI : MonoBehaviour {
         subTaskList = subTaskContainer.transform.GetChild(1);
 
         mainTaskContainer.gameObject.SetActive(true);
-        subTaskContainer.gameObject.SetActive(false);
+        subTaskContainer.gameObject.SetActive(true);
         mainActive = true;
-        subActive = false;
+        subActive = true;
+
     } //-- Start() --
 
     public void UpdateTaskListUI(TaskData[] taskData) {
@@ -50,9 +51,25 @@ public class TaskUI : MonoBehaviour {
         }
     } //-- UpdateTaskListUI() --
 
-    public void UpdateActiveTask(TaskData[] taskData) {
-        
-    }
+    public void InitMainTask1(TaskData[] taskData) {
+        foreach(TaskData td in taskData) {
+            if(td.mainId == 1) {
+                td.isActive = true;
+            } else {
+                td.isActive = false;
+            }
+        }
+    } //-- InitMainTask1() --
+
+    public void InitMainTask2(TaskData[] taskData) {
+        foreach(TaskData td in taskData) {
+            if(td.mainId == 2) {
+                td.isActive = true;
+            } else {
+                td.isActive = false;
+            }
+        }
+    } //-- InitMainTask2() --
 
     public void ShowTaskList() {
         if(!mainActive) {

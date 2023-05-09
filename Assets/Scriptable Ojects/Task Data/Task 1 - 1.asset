@@ -15,6 +15,6 @@ MonoBehaviour:
   mainId: 1
   subId: 1
   isActive: 1
-  isFinished: 0
+  isFinished: 1
   taskDetails: Make your way to the Storage Room
   requiredItem: {fileID: 0}

@@ -15,7 +15,7 @@ MonoBehaviour:
   mainId: 1
   subId: 4
   isActive: 1
-  isFinished: 0
+  isFinished: 1
   taskDetails: Search for your Blue Safety Goggles
   requiredItem: {fileID: 4227974729504752481, guid: ae210c6fcae4c8d4a955d9245bdcfc02,
     type: 3}

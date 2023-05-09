@@ -1,12 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class TaskManager : MonoBehaviour {
+
+    private Dictionary<TaskData, Task> m_taskDictionary;
+    public List<Task> task {get; private set;}
 
     public Canvas PlayerHUD;
     public InventorySystem inventorySystem;
     Transform mainTask, subTask;
     bool mainActive = false, subActive = false;
+
+
+    void Awake() {
+        task = new List<Task>();
+        m_taskDictionary = new Dictionary<TaskData, Task>();
+    } //-- Awake() --
 
     void Start() {
         mainTask = PlayerHUD.transform.Find("Task");

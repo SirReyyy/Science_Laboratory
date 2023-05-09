@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af2a2d077d9c0d4fa71e4f5484305f5, type: 3}
+  m_Name: Task 2 - 2
+  m_EditorClassIdentifier: 
+  mainId: 2
+  subId: 2
+  isActive: 0
+  isFinished: 0
+  taskDetails: '- Search for the Microscope'
+  requiredItem: {fileID: 6850820445048183167, guid: a1caf10942ab0484889502c80b7cf3fe,
+    type: 3}

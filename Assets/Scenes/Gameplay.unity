@@ -14329,7 +14329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHUD: {fileID: 2077577408}
-  inventorySystem: {fileID: 0}
+  inventorySystem: {fileID: 1399048213}
 --- !u!43 &1432833711
 Mesh:
   m_ObjectHideFlags: 0

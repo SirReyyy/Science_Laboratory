@@ -79,6 +79,9 @@ namespace StarterAssets
 		// UI
 		public UIManager uiManager;
 
+		// task
+		public TaskManager taskManager;
+
 	
 #if ENABLE_INPUT_SYSTEM
 		private PlayerInput _playerInput;
@@ -127,6 +130,7 @@ namespace StarterAssets
 			_fallTimeoutDelta = FallTimeout;
 
 			uiManager = GameObject.Find("GameManager").GetComponent<UIManager>();
+			taskManager = GameObject.Find("GameManager").GetComponent<TaskManager>();
 		}
 
 		private void Update()
@@ -136,6 +140,7 @@ namespace StarterAssets
 			Move();
 			CheckInteract();
 			Interact();
+			Task();
 		}
 
 		private void LateUpdate()
@@ -290,6 +295,13 @@ namespace StarterAssets
 					interactObj.Interact();
 					_input.interact = false;
 				}	
+			}
+		}
+
+		private void Task() {
+			if(_input.task) {
+				taskManager.ShowTaskList();
+				_input.task = false;
 			}
 		}
 

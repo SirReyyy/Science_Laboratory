@@ -51,9 +51,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Crouch",
+                    "name": "Task",
                     "type": "Button",
-                    "id": "84d5983c-00e3-4390-9a3c-2e7c7b8b3f52",
+                    "id": "c7543fcc-52cb-4667-81d3-9edaf54d7e0d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -261,23 +261,23 @@
                 },
                 {
                     "name": "",
-                    "id": "7ec704cf-a24f-41bb-8792-c108b26d7d2f",
-                    "path": "<Keyboard>/ctrl",
+                    "id": "e6d00b4a-3873-46be-afeb-38bbb0b6766c",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Crouch",
+                    "action": "Task",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "1fa08e05-d411-4bd4-9bfe-798818509627",
+                    "id": "fcdfd2ec-8251-4217-9e91-6c65f618097b",
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Crouch",
+                    "action": "Task",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

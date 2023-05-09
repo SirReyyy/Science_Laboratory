@@ -8,9 +8,15 @@ public class TaskUI : MonoBehaviour {
     // UI
     public Canvas PlayerHUD;
     Transform mainTaskContainer, subTaskContainer, subTaskList;
-    Text subTaskDetails;
+    Text mainTaskDetails, subTaskDetails;
     
     bool mainActive = false, subActive = false;
+
+    List<string> mainTask = new List<string> {
+        "Proper Laboratory \nUniform and Etiquette",
+        "Its time to Explore \nand Experiment",
+        "Job well done. \nTime to go home."
+    };
 
 
     void Start() {
@@ -38,6 +44,10 @@ public class TaskUI : MonoBehaviour {
                 } else if(td.isActive && td.isFinished) {
                     subTaskDetails.color = Color.green;
                 }
+
+                mainTaskDetails = mainTaskContainer.Find("MainTask").transform.GetChild(1).GetComponent<Text>();
+                mainTaskDetails.text = mainTask[0];
+
             } else if(td.mainId == 2 && td.isActive) {
                 subTaskDetails = subTaskList.GetChild(td.subId - 1).GetComponent<Text>();
                 subTaskDetails.text = td.taskDetails;
@@ -47,6 +57,9 @@ public class TaskUI : MonoBehaviour {
                 } else if(td.isActive && td.isFinished) {
                     subTaskDetails.color = Color.green;
                 }
+
+                mainTaskDetails = mainTaskContainer.Find("MainTask").transform.GetChild(1).GetComponent<Text>();
+                mainTaskDetails.text = mainTask[1];
             }
         }
     } //-- UpdateTaskListUI() --
@@ -70,6 +83,25 @@ public class TaskUI : MonoBehaviour {
             }
         }
     } //-- InitMainTask2() --
+
+    public void InitMainTaskEnd(TaskData[] taskData) {
+        foreach(TaskData td in taskData){
+            if(!td.isFinished) {
+                return;
+            }
+
+            if(td.subId == 1) {
+                subTaskDetails = subTaskList.GetChild(td.subId - 1).GetComponent<Text>();
+                subTaskDetails.text = "No task remaining.";
+            } else {
+                subTaskDetails = subTaskList.GetChild(td.subId - 1).GetComponent<Text>();
+                subTaskDetails.text = "";
+            }
+
+            mainTaskDetails = mainTaskContainer.Find("MainTask").transform.GetChild(1).GetComponent<Text>();
+            mainTaskDetails.text = mainTask[2];
+        }
+    } //-- InitMainTaskEnd() --
 
     public void ShowTaskList() {
         if(!mainActive) {

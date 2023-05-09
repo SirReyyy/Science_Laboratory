@@ -13,8 +13,7 @@ public class TaskManager : MonoBehaviour {
 
     //
     [HideInInspector]
-    public int MainTask1Count = 0;
-    public int MainTask2Count = 0; 
+    public int MainTask1Count, MainTask2Count;
 
 
     void Awake() {
@@ -23,12 +22,20 @@ public class TaskManager : MonoBehaviour {
     } //-- Awake() --
 
     void Start() {
+        MainTask1Count = 0;
+        MainTask2Count = 0;
+
         MainTask1();
         taskUI.InitMainTask1(taskData);
     } //-- Start() --
     
-    void Update() {
-        if(MainTask1Count >= 4) {
+    void Update() {        
+        if(MainTask2Count >= 4 && MainTask1Count >= 4) {
+            // set exit trigger active
+            Debug.Log(MainTask2Count);
+            MainTaskEnd();
+            taskUI.InitMainTaskEnd(taskData);
+        } else if(MainTask1Count >= 4) {
             MainTask2();
             taskUI.InitMainTask2(taskData);
         }
@@ -58,6 +65,13 @@ public class TaskManager : MonoBehaviour {
                 td.isFinished = true;
             }
             Add(td);
+        }
+    }
+
+    public void MainTaskEnd() {
+        foreach(TaskData td in taskData) {
+            td.isActive = false;
+            td.isFinished = true;
         }
     }
 

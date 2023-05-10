@@ -1,17 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 using System.Collections.Generic;
 
 public class TaskManager : MonoBehaviour {
+
     // Task List
     private Dictionary<TaskData, Task> m_taskDictionary;
     public List<Task> task {get; private set;}
     public TaskData[] taskData;
 
     // UI
+    public Canvas PlayerHUD; 
     public TaskUI taskUI;
+    Text timerUI;
+    private float gameTimeRemaining = 600.0f;
+    private TimeSpan time;
 
-    //
+    // Exit Trigger
+    public GameObject exitTrigger;
+
+    // Task Count Checker
     [HideInInspector]
     public int MainTask1Count, MainTask2Count;
 
@@ -27,12 +36,17 @@ public class TaskManager : MonoBehaviour {
 
         MainTask1();
         taskUI.InitMainTask1(taskData);
+
+        time = TimeSpan.FromSeconds(gameTimeRemaining);
+        timerUI = PlayerHUD.transform.Find("Header").transform.GetChild(0).gameObject.GetComponent<Text>();
     } //-- Start() --
     
-    void Update() {        
+    void Update() {
+        CheckGameTime();
+
         if(MainTask2Count >= 4 && MainTask1Count >= 4) {
             // set exit trigger active
-            Debug.Log(MainTask2Count);
+            exitTrigger.SetActive(true);
             MainTaskEnd();
             taskUI.InitMainTaskEnd(taskData);
         } else if(MainTask1Count >= 4) {
@@ -42,6 +56,15 @@ public class TaskManager : MonoBehaviour {
 
         taskUI.UpdateTaskListUI(taskData);
     } //-- Update() --
+
+    public void CheckGameTime() {
+        if(gameTimeRemaining > 0) {
+            gameTimeRemaining -= Time.deltaTime;
+            timerUI.text = TimeSpan.FromSeconds(gameTimeRemaining).ToString("mm':'ss");
+        } else {
+            Debug.Log("Game Over");
+        }
+    } //-- CheckGameTime() --
 
     public void MainTask1() {
         foreach(TaskData td in taskData) {

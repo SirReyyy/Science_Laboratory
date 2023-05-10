@@ -5,7 +5,7 @@ public class Triggers : MonoBehaviour {
     public TaskManager _taskManager;
     public TaskData _taskData;
 
-    public bool isLaboratory;
+    public bool isExit;
 
     void Start() {
         _taskManager = GameObject.Find("GameManager").GetComponent<TaskManager>();
@@ -13,15 +13,19 @@ public class Triggers : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Player") {
-            _taskData.isFinished = true;
+            if(!isExit) {
+                _taskData.isFinished = true;
             
-            if(_taskData.mainId == 1) {
-                _taskManager.MainTask1Count++;
-            } else {
-                _taskManager.MainTask2Count++;
-            }
+                if(_taskData.mainId == 1) {
+                    _taskManager.MainTask1Count++;
+                } else {
+                    _taskManager.MainTask2Count++;
+                }
 
-            Destroy(gameObject);
+                Destroy(gameObject);
+            } else {
+                Debug.Log("Game Over");
+            }
         }
     }
 }

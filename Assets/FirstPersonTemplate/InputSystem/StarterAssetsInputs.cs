@@ -15,6 +15,8 @@ namespace StarterAssets
 
 		public bool interact;
 		public bool task;
+		public bool pause;
+		public bool chat;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -56,6 +58,16 @@ namespace StarterAssets
 		{
 			TaskInput(value.isPressed);
 		}
+
+		public void OnPause(InputValue value) //--
+		{
+			PauseInput(value.isPressed);
+		}
+
+		public void OnChat(InputValue value) //--
+		{
+			ChatInput(value.isPressed);
+		}
 #endif
 
 
@@ -88,6 +100,17 @@ namespace StarterAssets
 		{
 			task = newInteractState;
 		}
+
+		public void PauseInput(bool newInteractState)
+		{
+			pause = newInteractState;
+		}
+
+		public void ChatInput(bool newInteractState)
+		{
+			chat = newInteractState;
+		}
+
 		
 		private void OnApplicationFocus(bool hasFocus)
 		{

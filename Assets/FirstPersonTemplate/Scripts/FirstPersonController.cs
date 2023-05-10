@@ -75,6 +75,9 @@ namespace StarterAssets
 		IInteractable interactObj;
 		bool canInteract = false;
     	public float InteractRange;
+		private bool interactCd = false;
+		private bool chatCd = false;
+
 
 		// UI
 		public UIManager uiManager;
@@ -141,6 +144,8 @@ namespace StarterAssets
 			CheckInteract();
 			Interact();
 			Task();
+			Pause();
+			Chat();
 		}
 
 		private void LateUpdate()
@@ -287,23 +292,54 @@ namespace StarterAssets
 			} else {
 				uiManager.ShowInteract(false);
 			}
-		}
+		} //-- CheckInteract() --
 
 		private void Interact() {
 			if(_input.interact) {
 				if(canInteract) {
-					interactObj.Interact();
-					_input.interact = false;
-				}	
+					if(!interactCd) {
+						interactObj.Interact();
+
+						Invoke("ResetCd", 2.0f);
+						interactCd = true;
+					}
+				}
+				_input.interact = false;
 			}
-		}
+		} //-- Interact() --
+
+		void ResetCd() {
+			interactCd = false;
+			chatCd = false;
+		} //-- ResetCd() --
 
 		private void Task() {
 			if(_input.task) {
 				taskManager.ShowTaskList();
 				_input.task = false;
 			}
-		}
+		} //-- Task() --
+
+		private void Pause() {
+			if(_input.pause) {
+				Debug.Log("pause");
+
+				_input.pause = false;
+			}
+		} //-- Task() --
+
+		private void Chat() {
+			if(_input.chat) {
+				if(!chatCd) {
+					Debug.Log("chat");
+
+					Invoke("ResetCd", 2.0f);
+					chatCd = true;
+				}
+
+				_input.chat = false;
+			}
+		} //-- Task() --
 
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 		{

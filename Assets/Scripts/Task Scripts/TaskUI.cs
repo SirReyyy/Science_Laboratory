@@ -13,7 +13,7 @@ public class TaskUI : MonoBehaviour {
     bool mainActive = false, subActive = false;
 
     List<string> mainTask = new List<string> {
-        "Proper Laboratory \nUniform and Etiquette",
+        "Proper Laboratory \nUniform and Practices",
         "Its time to Explore \nand Experiment",
         "Job well done. \nTime to go home."
     };

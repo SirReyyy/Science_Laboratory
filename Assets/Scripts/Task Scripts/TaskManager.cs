@@ -14,7 +14,8 @@ public class TaskManager : MonoBehaviour {
     public Canvas PlayerHUD; 
     public TaskUI taskUI;
     Text timerUI;
-    private float gameTimeRemaining = 600.0f;
+    [HideInInspector]
+    public float gameTimeRemaining = 600.0f;
     private TimeSpan time;
 
     // Exit Trigger
@@ -23,6 +24,9 @@ public class TaskManager : MonoBehaviour {
     // Task Count Checker
     [HideInInspector]
     public int MainTask1Count, MainTask2Count;
+
+    // Chatty
+    public ChattyManager chattyManager;
 
 
     void Awake() {
@@ -39,6 +43,7 @@ public class TaskManager : MonoBehaviour {
 
         time = TimeSpan.FromSeconds(gameTimeRemaining);
         timerUI = PlayerHUD.transform.Find("Header").transform.GetChild(0).gameObject.GetComponent<Text>();
+
     } //-- Start() --
     
     void Update() {

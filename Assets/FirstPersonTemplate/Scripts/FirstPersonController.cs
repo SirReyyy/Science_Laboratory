@@ -147,8 +147,8 @@ namespace StarterAssets
 			CheckInteract();
 			Interact();
 			Task();
-			Pause();
 			Chat();
+			Pause();
 		}
 
 		private void LateUpdate()
@@ -329,7 +329,7 @@ namespace StarterAssets
 
 				_input.pause = false;
 			}
-		} //-- Task() --
+		} //-- Pause() --
 
 		private void Chat() {
 			if(_input.chat) {
@@ -342,7 +342,16 @@ namespace StarterAssets
 
 				_input.chat = false;
 			}
-		} //-- Task() --
+		} //-- Chat() --
+
+		public void ChattyInteract() {
+			if(!chatCd) {
+				chattyManager.TaskMessages();
+
+				Invoke("ResetCd", 2.0f);
+				chatCd = true;
+			}
+		} //-- Chat() --
 
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 		{

@@ -61,7 +61,7 @@ public class ChattyManager : MonoBehaviour {
         taskList = _taskManager.taskData;
         SetTaskMessages();
 
-        msgContainer = PlayerHUD.transform.Find("Chatty").transform.GetChild(1);
+        msgContainer = PlayerHUD.transform.Find("Chatty").transform.GetChild(0);
         msgChatty = msgContainer.transform.GetChild(0).gameObject.GetComponent<Text>();
         txtChatty = msgContainer.transform.GetChild(1).gameObject.GetComponent<Text>();
 
@@ -78,7 +78,7 @@ public class ChattyManager : MonoBehaviour {
             msgContainer.gameObject.SetActive(true);
 
             msgIsActive = true;
-            Invoke("HideMessage", 5.0f);
+            Invoke("HideMessage", 3.0f);
         }
         
     } //-- ShowMessage() --
@@ -128,7 +128,6 @@ public class ChattyManager : MonoBehaviour {
             }
         }
 
-        Debug.Log(activeIndex);
         ShowMessage(msgTask[activeIndex]);
     } //-- TaskMessages() --
 

@@ -9,6 +9,7 @@ public class PickUp_Interact : MonoBehaviour, IInteractable {
 
     public TaskManager _taskManager;
     public TaskData _taskData;
+    public ChattyManager chattyManager;
 
 
     private int itemId;
@@ -19,6 +20,7 @@ public class PickUp_Interact : MonoBehaviour, IInteractable {
         inventorySystem = GameObject.Find("GameManager").GetComponent<InventorySystem>();
         uiManager = GameObject.Find("GameManager").GetComponent<UIManager>();
         _taskManager = GameObject.Find("GameManager").GetComponent<TaskManager>();
+        chattyManager = GameObject.Find("GameManager").GetComponent<ChattyManager>();
     } //-- Start() --
 
     public void Interact() {
@@ -32,8 +34,9 @@ public class PickUp_Interact : MonoBehaviour, IInteractable {
         }
         
         Destroy(gameObject);
-
+        
         itemId = referenceItem.id;
+        chattyManager.ComplimentMessages(itemId);
         uiManager.UpdateInventoryIcon(itemId - 1);
 
     } //-- Interact() --

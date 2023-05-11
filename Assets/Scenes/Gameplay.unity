@@ -280,6 +280,21 @@ PrefabInstance:
       propertyPath: inventorySystem
       value: 
       objectReference: {fileID: 1399048213}
+    - target: {fileID: 7838638771956675981, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e0478430a413cd843b0910c45df4b629, type: 2}
+    - target: {fileID: 7838638772236602455, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e0478430a413cd843b0910c45df4b629, type: 2}
+    - target: {fileID: 7838638772749452295, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e0478430a413cd843b0910c45df4b629, type: 2}
     - target: {fileID: 8865870020253685227, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
         type: 3}
       propertyPath: m_Name
@@ -723,6 +738,21 @@ PrefabInstance:
       propertyPath: inventorySystem
       value: 
       objectReference: {fileID: 1399048213}
+    - target: {fileID: 7838638771956675981, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6efb5118b0d39bd44ae1930c9e0fd685, type: 2}
+    - target: {fileID: 7838638772236602455, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6efb5118b0d39bd44ae1930c9e0fd685, type: 2}
+    - target: {fileID: 7838638772749452295, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6efb5118b0d39bd44ae1930c9e0fd685, type: 2}
     - target: {fileID: 8865870020253685227, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
         type: 3}
       propertyPath: m_Name
@@ -2014,7 +2044,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _taskManager: {fileID: 1399048216}
   _taskData: {fileID: 11400000, guid: d359b94a72da4f04ea4f190abfe396e0, type: 2}
+  chattyManager: {fileID: 1399048218}
   isExit: 0
+  isLaboratory: 0
 --- !u!1 &358407021
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,6 +3023,21 @@ PrefabInstance:
       propertyPath: inventorySystem
       value: 
       objectReference: {fileID: 1399048213}
+    - target: {fileID: 7838638771956675981, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9cd0bedb79ba53b4fb9b90cdb26918d0, type: 2}
+    - target: {fileID: 7838638772236602455, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9cd0bedb79ba53b4fb9b90cdb26918d0, type: 2}
+    - target: {fileID: 7838638772749452295, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9cd0bedb79ba53b4fb9b90cdb26918d0, type: 2}
     - target: {fileID: 8865870020253685227, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
         type: 3}
       propertyPath: m_Name
@@ -10169,6 +10216,21 @@ PrefabInstance:
       propertyPath: inventorySystem
       value: 
       objectReference: {fileID: 1399048213}
+    - target: {fileID: 7838638771956675981, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 266d1511e52378d49a092d73d13df2d7, type: 2}
+    - target: {fileID: 7838638772236602455, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 266d1511e52378d49a092d73d13df2d7, type: 2}
+    - target: {fileID: 7838638772749452295, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 266d1511e52378d49a092d73d13df2d7, type: 2}
     - target: {fileID: 8865870020253685227, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
         type: 3}
       propertyPath: m_Name
@@ -13909,9 +13971,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e3af6c1550ec09146bdf943cd19f4188, type: 2}
   - {fileID: 11400000, guid: df7e5c1e486001045afa2393fd7b9d3f, type: 2}
   - {fileID: 11400000, guid: d3a52d558f6bb5742b4c8bd8fc7999e9, type: 2}
-  - {fileID: 11400000, guid: cdc17b28a259adc4c8dae7f273020029, type: 2}
   - {fileID: 11400000, guid: 4bc95c7a62ffab442bcf0d6fc69a4844, type: 2}
   - {fileID: 11400000, guid: 3ce023c34feb90d4dac24078aa95ab13, type: 2}
+  - {fileID: 11400000, guid: cdc17b28a259adc4c8dae7f273020029, type: 2}
   - {fileID: 11400000, guid: d57bb5f42a95dcf4b832587b46da73df, type: 2}
   PlayerHUD: {fileID: 2077577408}
   taskUI: {fileID: 1399048217}
@@ -13948,6 +14010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _taskManager: {fileID: 1399048216}
   PlayerHUD: {fileID: 2077577408}
+  isCompleted: 0
 --- !u!43 &1432833711
 Mesh:
   m_ObjectHideFlags: 0
@@ -14338,7 +14401,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _taskManager: {fileID: 1399048216}
   _taskData: {fileID: 0}
+  chattyManager: {fileID: 0}
   isExit: 1
+  isLaboratory: 0
 --- !u!1001 &1575786936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15334,7 +15399,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _taskManager: {fileID: 1399048216}
   _taskData: {fileID: 11400000, guid: cdc17b28a259adc4c8dae7f273020029, type: 2}
+  chattyManager: {fileID: 1399048218}
   isExit: 0
+  isLaboratory: 1
 --- !u!1001 &1683752599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16770,6 +16837,21 @@ PrefabInstance:
       propertyPath: inventorySystem
       value: 
       objectReference: {fileID: 1399048213}
+    - target: {fileID: 7838638771956675981, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 54310beeb933aa8498ca82203b1467d0, type: 2}
+    - target: {fileID: 7838638772236602455, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 54310beeb933aa8498ca82203b1467d0, type: 2}
+    - target: {fileID: 7838638772749452295, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 54310beeb933aa8498ca82203b1467d0, type: 2}
     - target: {fileID: 8865870020253685227, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
         type: 3}
       propertyPath: m_Name
@@ -17123,6 +17205,7 @@ MonoBehaviour:
   itemReq1: {fileID: 0}
   itemReq2: {fileID: 0}
   itemReq3: {fileID: 0}
+  chattyManager: {fileID: 1399048218}
   isLaboratory: 0
   storageDoorAnimator: {fileID: 0}
   labDoorAnimator: {fileID: 0}
@@ -17841,6 +17924,26 @@ PrefabInstance:
       propertyPath: inventorySystem
       value: 
       objectReference: {fileID: 1399048213}
+    - target: {fileID: 3654106148871602261, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: isLabTable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838638771956675981, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f06202924570af49ace58fbc2c154c9, type: 2}
+    - target: {fileID: 7838638772236602455, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f06202924570af49ace58fbc2c154c9, type: 2}
+    - target: {fileID: 7838638772749452295, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f06202924570af49ace58fbc2c154c9, type: 2}
     - target: {fileID: 8865870020253685227, guid: ca1ff4afd025cb1409052dd94f6f1ba1,
         type: 3}
       propertyPath: m_Name
@@ -18737,6 +18840,7 @@ MonoBehaviour:
   itemReq1: {fileID: 11400000, guid: 6cd6fc4163c8fac44bdbc99f1621b070, type: 2}
   itemReq2: {fileID: 11400000, guid: cad271c444319d041ab06d59a92152e8, type: 2}
   itemReq3: {fileID: 11400000, guid: 987c8b3ab2e7b86488df01e4d7a3daef, type: 2}
+  chattyManager: {fileID: 1399048218}
   isLaboratory: 1
   storageDoorAnimator: {fileID: 0}
   labDoorAnimator: {fileID: 0}

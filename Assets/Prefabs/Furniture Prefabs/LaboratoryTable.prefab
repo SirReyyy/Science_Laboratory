@@ -900,6 +900,9 @@ MonoBehaviour:
   itemReq2: {fileID: 11400000, guid: e705fa2bbd88fa841ad236b1be251915, type: 2}
   _taskManager: {fileID: 0}
   _taskData: {fileID: 11400000, guid: d57bb5f42a95dcf4b832587b46da73df, type: 2}
+  chattyManager: {fileID: 0}
+  labTablePrefab: {fileID: 8865870020253685227}
+  labTableInteract: {fileID: 0}
 --- !u!1 &8865870020253685227
 GameObject:
   m_ObjectHideFlags: 0

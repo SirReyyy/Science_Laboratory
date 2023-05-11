@@ -15,6 +15,6 @@ MonoBehaviour:
   mainId: 2
   subId: 4
   isActive: 0
-  isFinished: 0
-  taskDetails: Find a Laboratory table and start the experiment
+  isFinished: 1
+  taskDetails: Go to your laboratory table and start the experiment
   requiredItem: {fileID: 0}

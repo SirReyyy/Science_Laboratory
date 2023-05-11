@@ -8,6 +8,8 @@ public class DoorLock_Interact : MonoBehaviour, IInteractable {
     public InventoryItemData itemReq2;
     public InventoryItemData itemReq3;
 
+    public ChattyManager chattyManager;
+
     public bool isLaboratory;
     bool labClose = true;
     bool storageClose = true;
@@ -18,6 +20,7 @@ public class DoorLock_Interact : MonoBehaviour, IInteractable {
 
     void Start() {
         inventorySystem = GameObject.Find("GameManager").GetComponent<InventorySystem>();
+        chattyManager = GameObject.Find("GameManager").GetComponent<ChattyManager>();
         storageDoorAnimator = GameObject.Find("Door (Storage)").GetComponent<Animator>();
         labDoorAnimator = GameObject.Find("Door (Lab)").GetComponent<Animator>();
     } //-- Start() --
@@ -33,8 +36,7 @@ public class DoorLock_Interact : MonoBehaviour, IInteractable {
                     labClose = true;
                 }
             } else {
-                // missing notif
-                Debug.Log("missing");
+                chattyManager.WarningMessages(0);
             }
         } else {
             // Storage Room

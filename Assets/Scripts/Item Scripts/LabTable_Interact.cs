@@ -9,14 +9,24 @@ public class LabTable_Interact : MonoBehaviour, IInteractable {
     public TaskManager _taskManager;
     public TaskData _taskData;
 
+    public ChattyManager chattyManager;
+
+
     bool finishedExperiment = false;
+    public bool isLabTable;
 
     void Start() {
         inventorySystem = GameObject.Find("GameManager").GetComponent<InventorySystem>();
         _taskManager = GameObject.Find("GameManager").GetComponent<TaskManager>();
+        chattyManager = GameObject.Find("GameManager").GetComponent<ChattyManager>();
     } //-- Start() --
 
     public void Interact() {
+        if(!isLabTable) {
+            chattyManager.WarningMessages(2);
+            return;
+        }
+
         if(!finishedExperiment) {
             if(HasRequirement()) {
             
@@ -30,15 +40,14 @@ public class LabTable_Interact : MonoBehaviour, IInteractable {
 
                 finishedExperiment = true;
 
+                chattyManager.ComplimentMessages(7);
+
             } else {
-                // Missing notification
-                Debug.Log("missing components");
+                chattyManager.WarningMessages(1);
             }
         } else {
-            // Already done pop-up
-            Debug.Log("done experiment");
+            chattyManager.WarningMessages(3);
         }
-        
     } //-- Interact() --
 
     public bool HasRequirement() {

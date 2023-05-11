@@ -9,7 +9,7 @@ public class ChattyManager : MonoBehaviour {
     
     TaskData[] taskList;
 
-    
+
     public Canvas PlayerHUD;
     Transform msgContainer;
     Text msgChatty, txtChatty;
@@ -17,17 +17,22 @@ public class ChattyManager : MonoBehaviour {
     public bool isCompleted = false;
 
     List<string> msgCompliments = new List<string> {
-        "Way to go, buddy.",
-        "Nice find. On to the next one.",
-        "Great work there, pal."
+        "Storage Room. You can find anything you might need in here.",
+        "Better protection than a regular pair of glasses.",
+        "White really suits you well, buddy.",
+        "Golden gloves, shiny and safe.",
+        "I wonder what we could see in the sample that we have.",
+        "Don't drop it or else we will pay for it.",
+        "The Laboratory Room. Let's go experiment, explore and enjoy.",
+        "Great job, pal. I always knew you can do it"
     };
 
     List<string> msgWarnings = new List<string> {
-        "You're not allowed to enter without your uniform.",
-        "You might be forgetting something back in the storage room."
+        "Entering without proper uniform is not allowed in the laboratory.",
+        "You can't do the experiment with just that, can you?",
+        "This isn't even your laboratory table, is it?",
+        "You're already done with the experiment. Don't overdo yourself."
     };
-
-    
 
     List<string> msgTimer = new List<string> {
         "Hi there, fellow science lover. \nChatty here, at your service.",
@@ -88,7 +93,7 @@ public class ChattyManager : MonoBehaviour {
     public void TimerMessages() {
         int timeLeft = (int)_taskManager.gameTimeRemaining;
         
-        if(timeLeft == 595) {
+        if(timeLeft == 598) {
             ShowMessage(msgTimer[0]);
         } else if(timeLeft == 480) {
             ShowMessage(msgTimer[1]);
@@ -127,8 +132,7 @@ public class ChattyManager : MonoBehaviour {
         ShowMessage(msgTask[activeIndex]);
     } //-- TaskMessages() --
 
-    public void ComplimentMessages() {
-        int index = Random.Range(0, msgCompliments.Count - 1);
+    public void ComplimentMessages(int index) {
         ShowMessage(msgCompliments[index]);
     } //-- ComplimentMessages() --
 

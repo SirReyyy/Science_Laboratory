@@ -1,21 +1,33 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Linq;
 
 public class ChattyManager : MonoBehaviour {
 
     public TaskManager _taskManager;
+    
+    TaskData[] taskList;
+
+    
     public Canvas PlayerHUD;
     Transform msgContainer;
     Text msgChatty, txtChatty;
     bool msgIsActive = false;
+    public bool isCompleted = false;
 
     List<string> msgCompliments = new List<string> {
         "Way to go, buddy.",
         "Nice find. On to the next one.",
-        "Great work there, pal.",
-        "You've done it. Let's go home now.",
+        "Great work there, pal."
     };
+
+    List<string> msgWarnings = new List<string> {
+        "You're not allowed to enter without your uniform.",
+        "You might be forgetting something back in the storage room."
+    };
+
+    
 
     List<string> msgTimer = new List<string> {
         "Hi there, fellow science lover. \nChatty here, at your service.",
@@ -34,10 +46,15 @@ public class ChattyManager : MonoBehaviour {
         "Explore and experiment to learn new things."
     };
 
-    List<string> msgTask = new List<string> {};
+    List<string> msgTask = new List<string> {
+        "You've done it. Time to go home now.",
+    };
+
 
     void Start() {
         _taskManager = GameObject.Find("GameManager").GetComponent<TaskManager>();
+        taskList = _taskManager.taskData;
+        SetTaskMessages();
 
         msgContainer = PlayerHUD.transform.Find("Chatty").transform.GetChild(1);
         msgChatty = msgContainer.transform.GetChild(0).gameObject.GetComponent<Text>();
@@ -47,7 +64,7 @@ public class ChattyManager : MonoBehaviour {
     } //-- Start() --
 
     void Update() {
-        TimerMessages();   
+        TimerMessages();
     } //-- Update() --
 
     public void ShowMessage(string message) {
@@ -86,9 +103,38 @@ public class ChattyManager : MonoBehaviour {
         }
     } //-- TimerMessages() -- 
 
-    public void TaskMessages() {
+    public void SetTaskMessages() {
+        foreach(TaskData td in taskList) {
+            msgTask.Add(td.taskDetails);
+        }
+    } //-- SetTaskMessages() --
 
+    public void TaskMessages() {
+        taskList = _taskManager.taskData;
+        int activeIndex = 0;
+
+        foreach(TaskData td in taskList) {
+            if(td.mainId == 1 && !td.isFinished) {
+                activeIndex = td.subId;
+                break;
+            } else if(td.mainId == 2 && !td.isFinished) {
+                activeIndex = td.subId + 4;
+                break;
+            }
+        }
+
+        Debug.Log(activeIndex);
+        ShowMessage(msgTask[activeIndex]);
     } //-- TaskMessages() --
+
+    public void ComplimentMessages() {
+        int index = Random.Range(0, msgCompliments.Count - 1);
+        ShowMessage(msgCompliments[index]);
+    } //-- ComplimentMessages() --
+
+    public void WarningMessages(int index) {
+        ShowMessage(msgWarnings[index]);
+    } //-- WarningMessages() --
 }
 
 

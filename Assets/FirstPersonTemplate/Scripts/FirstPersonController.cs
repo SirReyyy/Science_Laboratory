@@ -82,8 +82,11 @@ namespace StarterAssets
 		// UI
 		public UIManager uiManager;
 
-		// task
+		// Task
 		public TaskManager taskManager;
+
+		// Chatty
+		public ChattyManager chattyManager;
 
 	
 #if ENABLE_INPUT_SYSTEM
@@ -331,7 +334,7 @@ namespace StarterAssets
 		private void Chat() {
 			if(_input.chat) {
 				if(!chatCd) {
-					Debug.Log("chat");
+					chattyManager.TaskMessages();
 
 					Invoke("ResetCd", 2.0f);
 					chatCd = true;

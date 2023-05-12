@@ -60,6 +60,7 @@ namespace StarterAssets
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
+		public bool isCinemachineActive = true;
 
 		// player
 		private float _speed;
@@ -97,7 +98,7 @@ namespace StarterAssets
 #endif
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
-		public GameObject _mainCamera;
+		private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
 
@@ -174,8 +175,17 @@ namespace StarterAssets
 				//Don't multiply mouse input by Time.deltaTime
 				float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 					
-				_cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
-				_rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
+				// _cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
+				// _rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
+
+				//
+				if(isCinemachineActive) {
+					_cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
+					_rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
+				} else {
+					_cinemachineTargetPitch += 0;
+					_rotationVelocity = 0;
+				}
 
 				// clamp our pitch rotation
 				_cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);

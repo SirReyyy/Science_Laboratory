@@ -21,28 +21,17 @@ public class GameSceneManager : MonoBehaviour {
     void Start() {
         sceneName = SceneManager.GetActiveScene().name;
         InitScene(sceneName);
-        // InitScene();
     } //-- Start() --
-
-    // public void InitScene() {
-    //     isPlaying = true;
-    //     MouseCursor(false);
-
-    //     pauseMenu = GameMenu.transform.GetChild(0);
-    //     winMenu = GameMenu.transform.GetChild(1);
-    //     loseMenu = GameMenu.transform.GetChild(2);
-
-    //     pauseMenu.gameObject.SetActive(false);
-    //     winMenu.gameObject.SetActive(false);
-    //     loseMenu.gameObject.SetActive(false);
-    // }
 
     public void InitScene(string sceneName) {
         if(sceneName == "Home") {
-            return;
+            isPlaying = false;
+            MouseCursor(true);
         } else if(sceneName == "Gameplay") {
+            Time.timeScale = 1;
             isPlaying = true;
             MouseCursor(false);
+            fpController.isCinemachineActive = true;
 
             pauseMenu = GameMenu.transform.GetChild(0);
             winMenu = GameMenu.transform.GetChild(1);
@@ -83,7 +72,7 @@ public class GameSceneManager : MonoBehaviour {
     } //-- PlayGame() --
 
     public void ExitGame() {
-        UnityEditor.EditorApplication.isPlaying = false;
+        // UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     } //-- ExitGame() --
 
@@ -93,6 +82,7 @@ public class GameSceneManager : MonoBehaviour {
         PlayerHUD.gameObject.SetActive(false);
 
         isPlaying = false;
+        fpController.isCinemachineActive = false;
     } // -- PauseGame() --
 
     public void ResumeGame() {
@@ -101,6 +91,7 @@ public class GameSceneManager : MonoBehaviour {
         PlayerHUD.gameObject.SetActive(true);
 
         isPlaying = true;
+        fpController.isCinemachineActive = true;
     } // -- ResumeGame() --
 
     public void WinEnding() {
@@ -108,7 +99,9 @@ public class GameSceneManager : MonoBehaviour {
         winMenu.gameObject.SetActive(true);
         PlayerHUD.gameObject.SetActive(false);
 
+        isPlaying = false;
         MouseCursor(true);
+        fpController.isCinemachineActive = false;
     } // -- WinEnding() --
 
     public void LoseEnding() {
@@ -116,7 +109,9 @@ public class GameSceneManager : MonoBehaviour {
         loseMenu.gameObject.SetActive(true);
         PlayerHUD.gameObject.SetActive(false);
 
+        isPlaying = false;
         MouseCursor(true);
+        fpController.isCinemachineActive = false;
     } // -- LoseEnding() --
 
     public void RestartGame() {

@@ -35,7 +35,7 @@ public class ChattyManager : MonoBehaviour {
     };
 
     List<string> msgTimer = new List<string> {
-        "Hi there, fellow science lover. \nChatty here, at your service.",
+        "Hi there, fellow science lover. Chatty here, at your service.",
         "2 minutes have passed since, pal.",
         "5 minutes remaining my friend.",
         "2 minutes! definitely need to rush now.",

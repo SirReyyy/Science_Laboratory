@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/FirstPersonTemplate/Scenes/Playground.unity
     guid: 707acc8dffb72b144bb1ffbe1c965f3d
   - enabled: 1
+    path: Assets/Scenes/Home.unity
+    guid: 6ec3742852badfc409245d5057ba233b
+  - enabled: 1
     path: Assets/Scenes/Gameplay.unity
     guid: ed4bb4ad15508aa4caad8375139ad73c
   m_configObjects:

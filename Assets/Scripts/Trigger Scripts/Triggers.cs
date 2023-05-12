@@ -5,12 +5,14 @@ public class Triggers : MonoBehaviour {
     public TaskManager _taskManager;
     public TaskData _taskData;
     public ChattyManager chattyManager;
+    public GameSceneManager gameSceneManager;
 
     public bool isExit, isLaboratory;
 
     void Start() {
         _taskManager = GameObject.Find("GameManager").GetComponent<TaskManager>();
         chattyManager = GameObject.Find("GameManager").GetComponent<ChattyManager>();
+        gameSceneManager = GameObject.Find("GameManager").GetComponent<GameSceneManager>();
     } //-- Start() --
 
     private void OnTriggerEnter(Collider other) {
@@ -32,7 +34,7 @@ public class Triggers : MonoBehaviour {
 
                 Destroy(gameObject);
             } else {
-                Debug.Log("Game Over");
+                gameSceneManager.WinEnding();
             }
         }
     }

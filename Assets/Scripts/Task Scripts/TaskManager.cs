@@ -28,6 +28,9 @@ public class TaskManager : MonoBehaviour {
     // Chatty
     public ChattyManager chattyManager;
 
+    // Scene
+    public GameSceneManager gameSceneManager;
+
 
     void Awake() {
         task = new List<Task>();
@@ -67,7 +70,7 @@ public class TaskManager : MonoBehaviour {
             gameTimeRemaining -= Time.deltaTime;
             timerUI.text = TimeSpan.FromSeconds(gameTimeRemaining).ToString("mm':'ss");
         } else {
-            Debug.Log("Game Over");
+            gameSceneManager.LoseEnding();
         }
     } //-- CheckGameTime() --
 

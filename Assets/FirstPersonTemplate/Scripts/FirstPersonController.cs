@@ -88,13 +88,16 @@ namespace StarterAssets
 		// Chatty
 		public ChattyManager chattyManager;
 
+		//
+		public GameSceneManager sceneManager;
+
 	
 #if ENABLE_INPUT_SYSTEM
 		private PlayerInput _playerInput;
 #endif
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
-		private GameObject _mainCamera;
+		public GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
 
@@ -165,12 +168,12 @@ namespace StarterAssets
 
 		private void CameraRotation()
 		{
-			// if there is an input
+				// if there is an input
 			if (_input.look.sqrMagnitude >= _threshold)
 			{
 				//Don't multiply mouse input by Time.deltaTime
 				float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
-				
+					
 				_cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
 				_rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
 
@@ -325,7 +328,7 @@ namespace StarterAssets
 
 		private void Pause() {
 			if(_input.pause) {
-				Debug.Log("pause");
+				sceneManager.IsPaused();
 
 				_input.pause = false;
 			}
